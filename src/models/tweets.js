@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require("mongoose-paginate-v2");
 
-const TweetSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const TweetSchema = Schema({
     author: {
         type: String,
         required:true
@@ -19,4 +22,5 @@ const TweetSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Tweets', TweetSchema);
+TweetSchema.plugin(mongoosePaginate);
+mongoose.model('Tweet', TweetSchema);
